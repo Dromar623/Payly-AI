@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: rgba(39, 39, 42, 0.7);
+  }
+  body {
+    background-color: #09090b;
+    color: #f4f4f5;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(18, 18, 23, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(24, 24, 32, 0.85);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 30px -5px rgba(139, 92, 246, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Custom glow utility */
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-effect:hover::before {
+  opacity: 0.7;
+  filter: blur(8px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Print Styles for Executive Audit Dossier */
+@media print {
+  header, footer, .no-print {
+    display: none !important;
+  }
+  body {
+    background-color: #ffffff !important;
+    color: #09090b !important;
+  }
+  * {
+    border-color: #e4e4e7 !important;
+    box-shadow: none !important;
+  }
+  .bg-zinc-950, .bg-zinc-900, .bg-zinc-900\/50, .bg-zinc-900\/70, .bg-zinc-900\/60, .bg-zinc-950\/80, .bg-zinc-950\/90 {
+    background-color: #ffffff !important;
+    color: #09090b !important;
+    border: 1px solid #d4d4d8 !important;
+  }
+  .text-white, .text-zinc-100, .text-zinc-200, .text-zinc-300 {
+    color: #09090b !important;
+  }
+  .text-zinc-400, .text-zinc-500 {
+    color: #52525b !important;
+  }
+}
